@@ -1,0 +1,11 @@
+.elements__element {
+  width: 282px;
+  height: 361px;
+  border-radius: 10px;
+  background-color: white;
+  display: grid;
+  grid-template-areas: "pic pic"
+                       "name like";
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 80% 20%;
+}

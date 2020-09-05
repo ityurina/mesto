@@ -1,0 +1,12 @@
+.popup__close {
+  margin-right: -85px;
+  margin-top: -77px;
+  align-self: flex-end;
+  position: absolute;
+}
+
+.popup__close:hover {
+  opacity: .5;
+  cursor: pointer;
+  transform: rotate(45deg);
+}

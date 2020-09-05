@@ -1,0 +1,11 @@
+.profile__edit-btn {
+  grid-area: edit;
+  width: 24px;
+  height: 24px;
+  align-self: end;
+}
+
+.profile__edit-btn:hover {
+  opacity: .6;
+  cursor: pointer;
+}

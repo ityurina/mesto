@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="./pages/index.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mesto</title>
+</head>
+
+<body>
+<div class="page">
+ 
+  <header class="header">
+    <img src="./images/logo_white.png" alt="Mesto" class="header__logo">
+  </header> 
+  
+  
+  <main class="content">
+  
+  <section class="profile">
+    <div class="profile__avatar"><img src="./images/avatar.jpeg" alt="Аватар" class="profile__image"></div>
+    
+    <div class="profile__info">
+     <h1 class="profile__username">Ирина Тюрина</h1>
+     <img src="./images/Edit%20Button.png" class="profile__edit-btn">
+     <p class="profile__userinfo">Путешественник</p>
+     
+    </div>
+    
+    <button class="profile__add-btn"><img src="./images/add-btn.png" alt="Добавить"></button>
+    
+  </section>
+   
+  <section class="elements">
+   
+    <div class="elements__element">
+      <img src="./images/teriberka_01.png" alt="Кольский берег" class="elements__photo">
+      <p class="elements__name">Колький район</p>
+      <img class="elements__like" src="./images/like.svg" alt="Like">
+    </div>
+    
+    <div class="elements__element">
+      <img src="./images/teriberka_02.png" alt="Кольский тундра" class="elements__photo">
+      <p class="elements__name">Колький район</p>
+      <img class="elements__like" src="./images/like.svg" alt="Like">
+    </div>
+    
+    <div class="elements__element"> <img src="./images/teriberka_03.png" alt="Баренцево море" class="elements__photo">
+    <p class="elements__name">Кольский район</p>
+    <img class="elements__like" src="./images/like.svg" alt="Like"></div>
+    
+    <div class="elements__element"><img src="./images/teriberka_04.png" alt="Кладбище кораблей" class="elements__photo">
+    <p class="elements__name">Териберка</p>
+    <img class="elements__like" src="./images/like.svg" alt="Like"></div>
+    
+    <div class="elements__element"><img src="./images/teriberka_05.png" alt="Водопады Кольского" class="elements__photo">
+    <p class="elements__name">Териберка</p>
+    <img class="elements__like" src="./images/like.svg" alt="Like"></div>
+    
+    <div class="elements__element"><img src="./images/teriberka_06.png" alt="Териберка" class="elements__photo">
+    <p class="elements__name">Териберка</p>
+    <img class="elements__like" src="./images/like.svg" alt="Like">
+    </div>
+    
+  </section>
+  
+  <section class="popup">
+    <form class="popup__container">
+    <img class="popup__close" src="./images/close-icon.png" alt="Закрыть попап">
+    <h2 class="popup__title">Редактировать профиль</h2>
+    <input type="text" class="popup__item popup__item_type_name" placeholder="Имя">
+    <input type="text" class="popup__item popup__item_type_info" placeholder="Инфо">
+    <button class="popup__btn">Сохранить</button>
+    </form>
+  </section>
+  
+  </main>
+  
+  <footer class="footer">
+    <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+  </footer>
+   
+</div> 
+   
+<script src="./scripts/index.js" defer></script>   
+   
+</body>
+
+</html>
+
+
