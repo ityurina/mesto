@@ -23,3 +23,4 @@
 **GitHub Pages**
 
 Ссылка на проект: 
+https://ityurina.github.io/mesto/
