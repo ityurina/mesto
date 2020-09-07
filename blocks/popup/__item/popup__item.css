@@ -1,17 +1,32 @@
 .popup__item {
-  width: 358px;
-  height: 27,26;
-  background: none;
-  border: none;
-  text-align: start;
-  box-shadow: none; 
-  border-bottom: 1px solid #545454;
-  font-family: Inter;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 17px;
-  color: black;
-  box-sizing: border-box;
-  padding-bottom: 13.26px;
+    width: 358px;
+    height: 27.26px;
+    background: none;
+    border: none;
+    text-align: start;
+    box-shadow: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    color: black;
+    box-sizing: border-box;
+    padding-bottom: 13.26px;
+    margin: 0 0 29.74px;
+}
+
+.popup__item:first-of-type {
+    margin-top: 54px;
+}
+
+.popup__item:last-of-type {
+    margin: 0 0 48px;
+}
+
+@media (max-width: 520px) {
+    .popup__item {
+        width: 100%;
+    }
 }

@@ -1,14 +1,15 @@
 .elements__name {
-  color: black;
-  padding-left: 21px;
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 900;
-  font-size: 24px;
-  text-overflow: ellipsis;
-  line-height: 29px;
-  grid-area: name;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+    color: black;
+    margin: 0;
+    padding: 25px 0 31px 21px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    text-overflow: ellipsis;
+    line-height: 29px;
+    grid-area: name;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }

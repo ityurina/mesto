@@ -1,7 +1,15 @@
 .elements__like {
-  width: 20.76px;
-  height: 18.13px;
-  align-self: center;
-  justify-self: center;
-  grid-area: like;
+    width: 20.76px;
+    height: 18.13px;
+    align-self: center;
+    justify-self: center;
+    grid-area: like;
+    background: url("../../../images/like.svg");
+    border: 0;
+}
+
+.elements__like:hover {
+    cursor: pointer;
+    transition: 1s;
+    transform: scale(1.2);
 }
