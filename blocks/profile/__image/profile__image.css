@@ -1,7 +1,8 @@
 .profile__image {
-    width: 127.5px;
-    height: 127.5px;
+    width: 122px;
+    height: 122px;
     border-radius: 50%;
     overflow: hidden;
     grid-area: avatar;
+    padding: 0 0 3px
 }

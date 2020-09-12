@@ -17,6 +17,8 @@
         grid-template-areas:
             "username edit"
             "userinfo userinfo";
+        grid-template-rows: 38px 14px;
         grid-template-columns: 1fr 30px;
+        grid-row-gap: 14px;
     }
 }
