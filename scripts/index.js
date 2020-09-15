@@ -43,21 +43,16 @@ renderItem = ({name, link}) => {
 
 render();
 
-//общие правила открытия, закрытия, сохранения введенных значений для всех попапов:
-/*
-const popupOpen = (popup) => {
-     popup.classList.add('popup_is-opened')
- }
+//общие функции для всех попапов:
 const popup = document.querySelector('.popup');
-const popupClose = () => {
+
+const popupOpen = (popup) => {
+    popup.classList.add('popup_is-opened');
+}
+
+const popupClose = (popup, event) => {
     event.preventDefault();
     popup.classList.remove('popup_is-opened');
-}
-*/
-
-const formSubmit = (event) => {
-    saveUserData()
-    popupClose(event);
 }
 
 //попап для редактирования профиля:
@@ -71,14 +66,14 @@ const profileName = document.querySelector('.profile__username');
 const profileInfo = document.querySelector('.profile__userinfo');
 
 // открываем попап:
-const editPopupOpen = (editPopup) => {
-    editPopup.classList.add('popup_is-opened')
-};
+const editPopupOpen = () => {
+    loadUserData();
+    popupOpen(editPopup);
+}
 
 // закрываем попап:
-const editPopupClose = () => {
-    event.preventDefault();
-    editPopup.classList.remove('popup_is-opened');
+const editPopupClose = (event) =>{
+    popupClose(editPopup, event)
 }
 
 // подгружаем текущие данные профиля в соответствующие инпуты попапа:
@@ -102,10 +97,18 @@ const editFormSubmit = (event) => {
     saveUserData()
     editPopupClose(event);
 }
+/*
+ // надо еще поколдовать с сабмитом
+    const formSubmit = (event) => {
+    popupClose(editPopup, event);
+    saveUserData();
+}
+*/
 
-editPopupOpenButton.addEventListener('click', () => {editPopupOpen(editPopup)});
-editPopupCloseButton.addEventListener('click', () => {editPopupClose(editPopup)});
+editPopupOpenButton.addEventListener('click', editPopupOpen);
+editPopupCloseButton.addEventListener('click', editPopupClose);
 editPopupSaveButton.addEventListener('submit', editFormSubmit);
+
 
 //попап для добавления новых карточек:
 const addPopup = document.querySelector('.popup_add');
@@ -115,17 +118,17 @@ const addPopupSaveButton = addPopup.querySelector('.popup__form');
 const placeInput = document.querySelector('.popup__item_type_place');
 const linkInput = document.querySelector('.popup__item_type_link');
 
-//открываем попап:
-const addPopupOpen = (addPopup) => {
-    addPopup.classList.add('popup_is-opened')
+// открываем попап:
+const addPopupOpen = () => {
+    loadUserData();
+    popupOpen(addPopup);
 }
 
 // закрываем попап:
-const addPopupClose = () => {
-    event.preventDefault();
-    addPopup.classList.remove('popup_is-opened');
+const addPopupClose = (event) =>{
+    popupClose(addPopup, event)
 }
 
-addPopupOpenButton.addEventListener('click', () => {addPopupOpen(addPopup)});
-addPopupCloseButton.addEventListener('click', () => {addPopupClose(addPopup)});
+addPopupOpenButton.addEventListener('click', addPopupOpen);
+addPopupCloseButton.addEventListener('click', addPopupClose);
 addPopupSaveButton.addEventListener('submit', formSubmit);
