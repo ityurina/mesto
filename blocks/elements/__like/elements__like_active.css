@@ -1,0 +1,9 @@
+.elements__like_active {
+    width: 20.76px;
+    height: 18.13px;
+    align-self: center;
+    justify-self: center;
+    grid-area: like;
+    background: url("../../../images/like-active.svg");
+    border: 0;
+}

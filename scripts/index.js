@@ -22,23 +22,26 @@ const initialCards = [
     },
     {
         name: 'Териберка',
-        link: 'https://res.cloudinary.com/ityurina/image/upload/v1599936042/mesto/teriberka01_cmrrfe.jpg'
+        link: 'https://res.cloudinary.com/ityurina/image/upload/v1599936042/mesto/teriberka06_dtyycm.jpg'
     }
 ];
 const template = document.querySelector('.template__card');
 const cards = document.querySelector('.elements__list');
 
-render = () => {
-    initialCards.forEach(renderItem);
+//копируем темплейт карточки, возвращаем данные из массива, добавляем карточки в ul:
+const createCard = ({name, link}) => {
+    const card = template.content.cloneNode(true); //клонируем шаблон карточки
+    card.querySelector('.elements__name').innerText = name;
+    card.querySelector('.elements__photo').alt = name;
+    card.querySelector('.elements__photo').src = link;
+    return card; // возвращаем карточку с атрибутами элементов, обозначенными выше
 }
 
-//копируем темплейт карточки, возвращаем данные из массива, добавляем карточки в ul:
-renderItem = ({name, link}) => {
-    const newCard = template.content.cloneNode(true);
-    newCard.querySelector('.elements__name').innerText = name;
-    newCard.querySelector('.elements__photo').alt = name;
-    newCard.querySelector('.elements__photo').src = link;
-    cards.appendChild(newCard);
+const render = () => { //вызвали функцию создания карточки
+    initialCards.forEach(({name, link}) => { //для каждого элемента массива:
+        const card = createCard({name, link}); //передали карточке значения name и link
+        cards.appendChild(card); // добавили карточки в ul
+    })
 }
 
 render();
@@ -59,9 +62,9 @@ const popupClose = (popup, event) => {
 const editPopup = document.querySelector('.popup_edit');
 const editPopupOpenButton = document.querySelector('.profile__edit-btn');
 const editPopupCloseButton = editPopup.querySelector('.popup__close');
-const editPopupSaveButton = editPopup.querySelector('.popup__form');
-const nameInput = document.querySelector('.popup__item_type_name');
-const infoInput = document.querySelector('.popup__item_type_info');
+const editPopupSaveButton = editPopup.querySelector('.popup__form_edit');
+const userNameInput = document.querySelector('.popup__item_type_name');
+const userInfoInput = document.querySelector('.popup__item_type_info');
 const profileName = document.querySelector('.profile__username');
 const profileInfo = document.querySelector('.profile__userinfo');
 
@@ -78,16 +81,16 @@ const editPopupClose = (event) =>{
 
 // подгружаем текущие данные профиля в соответствующие инпуты попапа:
 const loadUserData = () => {
-    nameInput.value = profileName.textContent;
-    infoInput.value = profileInfo.textContent;
+    userNameInput.value = profileName.textContent;
+    userInfoInput.value = profileInfo.textContent;
 }
 
 loadUserData();
 
 // передаем введенные в инпуты данные профиля:
 const saveUserData = () =>{
-    profileName.textContent = nameInput.value;
-    profileInfo.textContent = infoInput.value;
+    profileName.textContent = userNameInput.value;
+    profileInfo.textContent = userInfoInput.value;
 }
 
 saveUserData();
@@ -97,13 +100,6 @@ const editFormSubmit = (event) => {
     saveUserData()
     editPopupClose(event);
 }
-/*
- // надо еще поколдовать с сабмитом
-    const formSubmit = (event) => {
-    popupClose(editPopup, event);
-    saveUserData();
-}
-*/
 
 editPopupOpenButton.addEventListener('click', editPopupOpen);
 editPopupCloseButton.addEventListener('click', editPopupClose);
@@ -114,9 +110,9 @@ editPopupSaveButton.addEventListener('submit', editFormSubmit);
 const addPopup = document.querySelector('.popup_add');
 const addPopupOpenButton = document.querySelector('.profile__add-btn');
 const addPopupCloseButton = addPopup.querySelector('.popup__close');
-const addPopupSaveButton = addPopup.querySelector('.popup__form');
-const placeInput = document.querySelector('.popup__item_type_place');
-const linkInput = document.querySelector('.popup__item_type_link');
+const addPopupSaveButton = addPopup.querySelector('.popup__form_add');
+const cardNameInput = document.querySelector('.popup__item_type_place');
+const cardLinkInput = document.querySelector('.popup__item_type_link');
 
 // открываем попап:
 const addPopupOpen = () => {
@@ -126,9 +122,28 @@ const addPopupOpen = () => {
 
 // закрываем попап:
 const addPopupClose = (event) =>{
-    popupClose(addPopup, event)
+    popupClose(addPopup, event);
+}
+
+// добавление карточки:
+const addCard = (name, link) => {
+    const card = createCard({name, link});
+    cards.prepend(card);
+}
+
+// при нажатии на "создать" передаем значения из инпутов в массив для создания новой карточки:
+const addFormSubmit = (event) => {
+    addCard(cardNameInput.value, cardLinkInput.value);
+    addPopupClose(event)
 }
 
 addPopupOpenButton.addEventListener('click', addPopupOpen);
 addPopupCloseButton.addEventListener('click', addPopupClose);
-addPopupSaveButton.addEventListener('submit', formSubmit);
+addPopupSaveButton.addEventListener('submit', addFormSubmit);
+
+
+// Лайк
+const like = document.querySelectorAll('.elements__like');
+like.forEach(item => item.addEventListener('click', function(evt) {
+    evt.target.classList.toggle('elements__like_active')
+}));
