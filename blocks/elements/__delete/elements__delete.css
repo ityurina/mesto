@@ -1,0 +1,18 @@
+.elements__delete {
+    position: absolute;
+    grid-template-area: pic;
+    padding: 0;
+    top: 18px;
+    left: 249px;
+    width: 18px;
+    height: 18px;
+    background-size: contain;
+    background: url("../../../images/delete.svg");
+    border: 0;
+    display: block;
+}
+
+.elements__delete:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}

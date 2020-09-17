@@ -34,6 +34,17 @@ const createCard = ({name, link}) => {
     card.querySelector('.elements__name').innerText = name;
     card.querySelector('.elements__photo').alt = name;
     card.querySelector('.elements__photo').src = link;
+   /* // лайк:
+    const like = card.querySelector('.elements__like');
+    like.addEventListener('click', function(event) {
+        event.target.classList.toggle('elements__like_active')
+    });*/
+    // удаление карточки:
+    const deleteButton = card.querySelector('.elements__delete');
+    deleteButton.addEventListener('click', function () {
+        const cardsItem = deleteButton.closest('.elements__element');
+        cardsItem.remove();
+    });
     return card; // возвращаем карточку с атрибутами элементов, обозначенными выше
 }
 
@@ -144,6 +155,6 @@ addPopupSaveButton.addEventListener('submit', addFormSubmit);
 
 // Лайк
 const like = document.querySelectorAll('.elements__like');
-like.forEach(item => item.addEventListener('click', function(evt) {
-    evt.target.classList.toggle('elements__like_active')
+like.forEach(likeItem => likeItem.addEventListener('click', function(event) {
+    event.target.classList.toggle('elements__like_active')
 }));

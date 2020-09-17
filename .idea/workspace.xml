@@ -20,12 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="536014d8-3ba0-4556-b7b9-e0a17cf611af" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/blocks/elements/__like/elements__like_active.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blocks/elements/__delete/elements__delete.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blocks/elements/template/__card/template__card.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ pointer.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/delete.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/elements/__element/elements__element.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/elements/__element/elements__element.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/elements/__like/elements__like.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/elements/__like/elements__like.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/test.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/test.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,11 +43,15 @@
     <option name="showPreview" value="true" />
   </component>
   <component name="ProjectId" id="1hRPokz9sX3JKDmNXfAXfNmjxal" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -68,7 +76,8 @@
       <workItem from="1600024495814" duration="168000" />
       <workItem from="1600167525971" duration="9455000" />
       <workItem from="1600226625320" duration="147000" />
-      <workItem from="1600227821183" duration="22092000" />
+      <workItem from="1600227821183" duration="24681000" />
+      <workItem from="1600317101621" duration="8734000" />
     </task>
     <servers />
   </component>
@@ -87,7 +96,14 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="171" y="349" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600330562849">
+      <screen x="0" y="23" width="1792" height="1015" />
+    </state>
+    <state x="171" y="349" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1792.1015@0.23.1792.1015" timestamp="1600330562849" />
     <state x="548" y="235" key="run.anything.popup" timestamp="1599978159263">
       <screen x="0" y="23" width="1792" height="1015" />
     </state>
