@@ -25,8 +25,69 @@ const initialCards = [
         link: 'https://res.cloudinary.com/ityurina/image/upload/v1599936042/mesto/teriberka06_dtyycm.jpg'
     }
 ];
+const popup = document.querySelector('.popup');
 const template = document.querySelector('.template__card');
 const cards = document.querySelector('.elements__list');
+const card = document.querySelector('.elements__element');
+//попап для просмотра фото:
+const galleryPopup = document.querySelector('.popup__gallery');
+const galleryPopupPhoto = popup.querySelector('.popup__photo');
+const galleryPopupCaption = galleryPopup.querySelector('.popup__caption');
+//попап для редактирования профиля:
+const editPopup = document.querySelector('.popup_edit');
+const editPopupOpenButton = document.querySelector('.profile__edit-btn');
+const editPopupCloseButton = editPopup.querySelector('.popup__close');
+const editPopupSaveButton = editPopup.querySelector('.popup__form_edit');
+const userNameInput = document.querySelector('.popup__item_type_name');
+const userInfoInput = document.querySelector('.popup__item_type_info');
+const profileName = document.querySelector('.profile__username');
+const profileInfo = document.querySelector('.profile__userinfo');
+//попап для добавления новых карточек:
+const addPopup = document.querySelector('.popup_add');
+const addPopupOpenButton = document.querySelector('.profile__add-btn');
+const addPopupCloseButton = addPopup.querySelector('.popup__close');
+const addPopupSaveButton = addPopup.querySelector('.popup__form_add');
+const cardNameInput = document.querySelector('.popup__item_type_place');
+const cardLinkInput = document.querySelector('.popup__item_type_link');
+
+
+// удаление карточки:
+const removeCardsItem = (event) => {
+    event.preventDefault();
+    event.target.closest('.elements__element').remove();
+}
+
+// переключение лайка:
+const likeOnOff = (event) => {
+    event.target.classList.toggle('elements__like_active')
+};
+
+// открытие просмотра фото:
+const galleryPopupOpen = () => {
+    popupOpen(galleryPopup);
+    galleryPopupPhoto.src = cardLinkInput.textContent;
+    galleryPopupPhoto.alt = cardNameInput.textContent;
+    galleryPopupCaption.textContent = cardNameInput.textContent;
+}
+// закрываем просмотр фото:
+const galleryPopupClose = (event) => {
+    popupClose(galleryPopup, event)
+};
+
+//слушатели:
+const createCardListeners = (card) => {
+    //открыть попап:
+    const cardImage = card.querySelector('.elements__photo')
+    cardImage.addEventListener('click', galleryPopupOpen);
+    //закрыть попап:
+    galleryPopup.querySelector('.popup__close').addEventListener('click', galleryPopupClose);
+    //лайк:
+    const like = card.querySelector('.elements__like');
+    like.addEventListener('click', likeOnOff);
+    // удаление карточки:
+    const deleteButton = card.querySelector('.elements__delete');
+    deleteButton.addEventListener('click', removeCardsItem);
+};
 
 //копируем темплейт карточки, возвращаем данные из массива, добавляем карточки в ul:
 const createCard = ({name, link}) => {
@@ -34,17 +95,7 @@ const createCard = ({name, link}) => {
     card.querySelector('.elements__name').innerText = name;
     card.querySelector('.elements__photo').alt = name;
     card.querySelector('.elements__photo').src = link;
-   /* // лайк:
-    const like = card.querySelector('.elements__like');
-    like.addEventListener('click', function(event) {
-        event.target.classList.toggle('elements__like_active')
-    });*/
-    // удаление карточки:
-    const deleteButton = card.querySelector('.elements__delete');
-    deleteButton.addEventListener('click', function () {
-        const cardsItem = deleteButton.closest('.elements__element');
-        cardsItem.remove();
-    });
+    createCardListeners(card);
     return card; // возвращаем карточку с атрибутами элементов, обозначенными выше
 }
 
@@ -57,9 +108,14 @@ const render = () => { //вызвали функцию создания карт
 
 render();
 
-//общие функции для всех попапов:
-const popup = document.querySelector('.popup');
+/*// Лайк
+const like = document.querySelectorAll('.elements__like');
+like.forEach(likeItem => likeItem.addEventListener('click', function(event) {
+    event.target.classList.toggle('elements__like_active')
+}));
+*/
 
+//общие функции для всех попапов:
 const popupOpen = (popup) => {
     popup.classList.add('popup_is-opened');
 }
@@ -70,14 +126,6 @@ const popupClose = (popup, event) => {
 }
 
 //попап для редактирования профиля:
-const editPopup = document.querySelector('.popup_edit');
-const editPopupOpenButton = document.querySelector('.profile__edit-btn');
-const editPopupCloseButton = editPopup.querySelector('.popup__close');
-const editPopupSaveButton = editPopup.querySelector('.popup__form_edit');
-const userNameInput = document.querySelector('.popup__item_type_name');
-const userInfoInput = document.querySelector('.popup__item_type_info');
-const profileName = document.querySelector('.profile__username');
-const profileInfo = document.querySelector('.profile__userinfo');
 
 // открываем попап:
 const editPopupOpen = () => {
@@ -111,20 +159,12 @@ const editFormSubmit = (event) => {
     saveUserData()
     editPopupClose(event);
 }
-
+//слушатели:
 editPopupOpenButton.addEventListener('click', editPopupOpen);
 editPopupCloseButton.addEventListener('click', editPopupClose);
 editPopupSaveButton.addEventListener('submit', editFormSubmit);
 
-
 //попап для добавления новых карточек:
-const addPopup = document.querySelector('.popup_add');
-const addPopupOpenButton = document.querySelector('.profile__add-btn');
-const addPopupCloseButton = addPopup.querySelector('.popup__close');
-const addPopupSaveButton = addPopup.querySelector('.popup__form_add');
-const cardNameInput = document.querySelector('.popup__item_type_place');
-const cardLinkInput = document.querySelector('.popup__item_type_link');
-
 // открываем попап:
 const addPopupOpen = () => {
     loadUserData();
@@ -147,14 +187,10 @@ const addFormSubmit = (event) => {
     addCard(cardNameInput.value, cardLinkInput.value);
     addPopupClose(event)
 }
-
+//слушатели:
 addPopupOpenButton.addEventListener('click', addPopupOpen);
 addPopupCloseButton.addEventListener('click', addPopupClose);
 addPopupSaveButton.addEventListener('submit', addFormSubmit);
 
 
-// Лайк
-const like = document.querySelectorAll('.elements__like');
-like.forEach(likeItem => likeItem.addEventListener('click', function(event) {
-    event.target.classList.toggle('elements__like_active')
-}));
+
