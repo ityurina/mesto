@@ -18,6 +18,11 @@
 }
 
 .profile__add-btn:hover {
-    opacity: 0.6;
-    cursor: pointer;
+    opacity: .6;
+    transition: opacity .5s;
+    cursor: url('../../../images/ pointer.svg'), pointer;
+}
+
+.profile__add-btn:focus {
+    outline: none;
 }

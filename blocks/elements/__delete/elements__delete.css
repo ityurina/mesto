@@ -1,6 +1,5 @@
 .elements__delete {
     position: absolute;
-    grid-template-area: pic;
     padding: 0;
     top: 18px;
     left: 249px;
@@ -13,6 +12,7 @@
 }
 
 .elements__delete:hover {
-    opacity: 0.6;
-    cursor: pointer;
+    opacity: .6;
+    transition: opacity .5s;
+    cursor: url('../../../images/ pointer.svg'), pointer;
 }

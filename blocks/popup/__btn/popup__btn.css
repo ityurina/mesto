@@ -10,9 +10,13 @@
 }
 
 .popup__btn:hover {
+    cursor: url('../../../images/ pointer.svg'), pointer;
     background: rgba(0, 0, 0, 0.8);
-    cursor: pointer;
 }
+
+.popup__btn:focus {
+     outline: none;
+ }
 
 @media (max-width: 520px) {
     .popup__btn {

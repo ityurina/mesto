@@ -30,7 +30,7 @@ const template = document.querySelector('.template__card');
 const cards = document.querySelector('.elements__list');
 const card = document.querySelector('.elements__element');
 //попап для просмотра фото:
-const galleryPopup = document.querySelector('.popup__gallery');
+const galleryPopup = document.querySelector('.popup_gallery');
 const galleryPopupPhoto = galleryPopup.querySelector('.popup__photo');
 const galleryPopupCaption = galleryPopup.querySelector('.popup__caption');
 //попап для редактирования профиля:

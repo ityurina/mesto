@@ -7,12 +7,17 @@
     background-image: url("../../../images/edit_btn.svg");
     background-size: contain;
     border: 0;
-    box-shadow: 0;
+    box-shadow: none;
+}
+
+.profile__edit-btn:focus {
+    outline: none;
 }
 
 .profile__edit-btn:hover {
-    opacity: 0.6;
-    cursor: pointer;
+    opacity: .6;
+    transition: opacity .5s;
+    cursor: url('../../../images/ pointer.svg'), pointer;
 }
 
 @media (max-width: 700px) {

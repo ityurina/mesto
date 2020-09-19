@@ -4,16 +4,20 @@
     padding: 0;
     right: -40px;
     top: -45px;
-    align-self: flex-end;
     position: absolute;
     background: url("../../../images/close_btn.svg");
     background-size: contain;
     border: 0;
 }
 
+.popup__close:focus {
+    outline: none;
+}
+
 .popup__close:hover {
-    opacity: 0.6;
-    cursor: pointer;
+    opacity: .6;
+    transition: opacity .5s;
+    cursor: url('../../../images/ pointer.svg'), pointer;
 }
 
 @media (max-width: 520px) {

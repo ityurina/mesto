@@ -8,9 +8,12 @@
     border: 0;
 }
 
+.elements__like:focus {
+    outline: none;
+}
+
 .elements__like:hover {
-    opacity: 0.6;
-    cursor: pointer;
-    transition: 1s;
-    transform: scale(1.2);
+    opacity: .6;
+    transition: opacity .5s;
+    cursor: url('../../../images/ pointer.svg'), pointer;
 }
