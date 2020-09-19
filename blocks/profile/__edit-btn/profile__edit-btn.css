@@ -10,7 +10,7 @@
     box-shadow: none;
 }
 
-.profile__edit-btn:focus {
+.profile__edit-btn:focus, .profile__edit-btn:active {
     outline: none;
 }
 

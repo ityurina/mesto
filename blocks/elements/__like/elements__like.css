@@ -8,7 +8,7 @@
     border: 0;
 }
 
-.elements__like:focus {
+.elements__like:focus, .elements__like:active {
     outline: none;
 }
 

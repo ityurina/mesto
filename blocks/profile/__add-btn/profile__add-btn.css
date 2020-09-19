@@ -23,6 +23,6 @@
     cursor: url('../../../images/ pointer.svg'), pointer;
 }
 
-.profile__add-btn:focus {
+.profile__add-btn:focus, .profile__add-btn:active {
     outline: none;
 }
