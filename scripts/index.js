@@ -31,7 +31,7 @@ const cards = document.querySelector('.elements__list');
 const card = document.querySelector('.elements__element');
 //попап для просмотра фото:
 const galleryPopup = document.querySelector('.popup__gallery');
-const galleryPopupPhoto = popup.querySelector('.popup__photo');
+const galleryPopupPhoto = galleryPopup.querySelector('.popup__photo');
 const galleryPopupCaption = galleryPopup.querySelector('.popup__caption');
 //попап для редактирования профиля:
 const editPopup = document.querySelector('.popup_edit');
@@ -63,12 +63,14 @@ const likeOnOff = (event) => {
 };
 
 // открытие просмотра фото:
-const galleryPopupOpen = () => {
+const galleryPopupOpen = (event) => {
     popupOpen(galleryPopup);
-    galleryPopupPhoto.src = cardLinkInput.textContent;
-    galleryPopupPhoto.alt = cardNameInput.textContent;
-    galleryPopupCaption.textContent = cardNameInput.textContent;
+    const image = event.target.closest('.elements__photo');
+    galleryPopupPhoto.src = image.src;
+    galleryPopupPhoto.alt = image.alt;
+    galleryPopupCaption.textContent = image.alt;
 }
+
 // закрываем просмотр фото:
 const galleryPopupClose = (event) => {
     popupClose(galleryPopup, event)
@@ -108,13 +110,6 @@ const render = () => { //вызвали функцию создания карт
 
 render();
 
-/*// Лайк
-const like = document.querySelectorAll('.elements__like');
-like.forEach(likeItem => likeItem.addEventListener('click', function(event) {
-    event.target.classList.toggle('elements__like_active')
-}));
-*/
-
 //общие функции для всех попапов:
 const popupOpen = (popup) => {
     popup.classList.add('popup_is-opened');
@@ -124,6 +119,8 @@ const popupClose = (popup, event) => {
     event.preventDefault();
     popup.classList.remove('popup_is-opened');
 }
+
+
 
 //попап для редактирования профиля:
 
@@ -191,6 +188,4 @@ const addFormSubmit = (event) => {
 addPopupOpenButton.addEventListener('click', addPopupOpen);
 addPopupCloseButton.addEventListener('click', addPopupClose);
 addPopupSaveButton.addEventListener('submit', addFormSubmit);
-
-
 
