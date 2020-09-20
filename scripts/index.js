@@ -2,7 +2,7 @@
 const initialCards = [
     {
         name: 'Кольский район',
-        link: 'https://res.cloudinary.com/ityurina/image/upload/v1599936042/mesto/teriberka01_cmrrfe.jpg'
+        link: 'https://res.cloudinary.com/ityurina/image/upload/v1600548741/mesto/teriberka0001_shaeud.jpg'
     },
     {
         name: 'Кольский район',
@@ -58,13 +58,13 @@ const removeCardsItem = (event) => {
 }
 
 // переключение лайка:
-const likeOnOff = (event) => {
+const toggleLike= (event) => {
     event.target.classList.toggle('elements__like_active')
 };
 
 // открытие просмотра фото:
-const galleryPopupOpen = (event) => {
-    popupOpen(galleryPopup);
+const openGalleryPopup = (event) => {
+    openPopup(galleryPopup);
     const image = event.target.closest('.elements__photo');
     galleryPopupPhoto.src = image.src;
     galleryPopupPhoto.alt = image.alt;
@@ -72,20 +72,20 @@ const galleryPopupOpen = (event) => {
 }
 
 // закрываем просмотр фото:
-const galleryPopupClose = (event) => {
-    popupClose(galleryPopup, event)
+const closeGalleryPopup = (event) => {
+    closePopup(galleryPopup, event)
 };
 
 //слушатели:
 const createCardListeners = (card) => {
     //открыть попап:
     const cardImage = card.querySelector('.elements__photo')
-    cardImage.addEventListener('click', galleryPopupOpen);
+    cardImage.addEventListener('click', openGalleryPopup);
     //закрыть попап:
-    galleryPopup.querySelector('.popup__close').addEventListener('click', galleryPopupClose);
+    galleryPopup.querySelector('.popup__close').addEventListener('click', closeGalleryPopup);
     //лайк:
     const like = card.querySelector('.elements__like');
-    like.addEventListener('click', likeOnOff);
+    like.addEventListener('click', toggleLike);
     // удаление карточки:
     const deleteButton = card.querySelector('.elements__delete');
     deleteButton.addEventListener('click', removeCardsItem);
@@ -111,28 +111,26 @@ const render = () => { //вызвали функцию создания карт
 render();
 
 //общие функции для всех попапов:
-const popupOpen = (popup) => {
+const openPopup = (popup) => {
     popup.classList.add('popup_is-opened');
 }
 
-const popupClose = (popup, event) => {
+const closePopup = (popup, event) => {
     event.preventDefault();
     popup.classList.remove('popup_is-opened');
 }
 
-
-
 //попап для редактирования профиля:
 
 // открываем попап:
-const editPopupOpen = () => {
+const openEditPopup = () => {
     loadUserData();
-    popupOpen(editPopup);
+    openPopup(editPopup);
 }
 
 // закрываем попап:
-const editPopupClose = (event) =>{
-    popupClose(editPopup, event)
+const closeEditPopup = (event) =>{
+    closePopup(editPopup, event)
 }
 
 // подгружаем текущие данные профиля в соответствующие инпуты попапа:
@@ -152,25 +150,25 @@ const saveUserData = () =>{
 saveUserData();
 
 // при нажатии на "сохранить" вызываем функции для сохранения данных из инпута и закрытия попапа:
-const editFormSubmit = (event) => {
+const submitEditForm = (event) => {
     saveUserData()
-    editPopupClose(event);
+    closeEditPopup(event);
 }
 //слушатели:
-editPopupOpenButton.addEventListener('click', editPopupOpen);
-editPopupCloseButton.addEventListener('click', editPopupClose);
-editPopupSaveButton.addEventListener('submit', editFormSubmit);
+editPopupOpenButton.addEventListener('click', openEditPopup);
+editPopupCloseButton.addEventListener('click', closeEditPopup);
+editPopupSaveButton.addEventListener('submit', submitEditForm);
 
 //попап для добавления новых карточек:
 // открываем попап:
-const addPopupOpen = () => {
-    loadUserData();
-    popupOpen(addPopup);
+const openAddPopup = () => {
+    addPopupSaveButton.reset();
+    openPopup(addPopup);
 }
 
 // закрываем попап:
-const addPopupClose = (event) =>{
-    popupClose(addPopup, event);
+const closeAddPopup = (event) =>{
+    closePopup(addPopup, event);
 }
 
 // добавление карточки:
@@ -180,12 +178,11 @@ const addCard = (name, link) => {
 }
 
 // при нажатии на "создать" передаем значения из инпутов в массив для создания новой карточки:
-const addFormSubmit = (event) => {
+const submitAddForm = (event) => {
     addCard(cardNameInput.value, cardLinkInput.value);
-    addPopupClose(event)
+    closeAddPopup(event)
 }
 //слушатели:
-addPopupOpenButton.addEventListener('click', addPopupOpen);
-addPopupCloseButton.addEventListener('click', addPopupClose);
-addPopupSaveButton.addEventListener('submit', addFormSubmit);
-
+addPopupOpenButton.addEventListener('click', openAddPopup);
+addPopupCloseButton.addEventListener('click', closeAddPopup);
+addPopupSaveButton.addEventListener('submit', submitAddForm);

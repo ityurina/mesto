@@ -21,8 +21,11 @@
   <component name="ChangeListManager">
     <list default="true" id="536014d8-3ba0-4556-b7b9-e0a17cf611af" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/popup/_is-opened/popup_is-opened.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/_is-opened/popup_is-opened.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/popup/popup.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/popup.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/popup/__item/popup__item.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/__item/popup__item.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/test.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +75,9 @@
       <workItem from="1600227821183" duration="24681000" />
       <workItem from="1600317101621" duration="9574000" />
       <workItem from="1600407116899" duration="25015000" />
-      <workItem from="1600497739732" duration="15454000" />
+      <workItem from="1600497739732" duration="19417000" />
+      <workItem from="1600585012745" duration="1597000" />
+      <workItem from="1600592716349" duration="2677000" />
     </task>
     <servers />
   </component>
