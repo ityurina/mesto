@@ -1,34 +1,5 @@
-//массив с контентом для карточек:
-const initialCards = [
-    {
-        name: 'Кольский район',
-        link: 'https://res.cloudinary.com/ityurina/image/upload/v1600548741/mesto/teriberka0001_shaeud.jpg'
-    },
-    {
-        name: 'Кольский район',
-        link: 'https://res.cloudinary.com/ityurina/image/upload/v1599936043/mesto/teriberka02_yl1qpz.jpg'
-    },
-    {
-        name: 'Кольский район',
-        link: 'https://res.cloudinary.com/ityurina/image/upload/v1599936042/mesto/teriberka03_ne5uwa.jpg'
-    },
-    {
-        name: 'Териберка',
-        link: 'https://res.cloudinary.com/ityurina/image/upload/v1599936042/mesto/teriberka04_brc7tr.jpg'
-    },
-    {
-        name: 'Териберка',
-        link: 'https://res.cloudinary.com/ityurina/image/upload/v1599936042/mesto/teriberka05_xia8mw.jpg'
-    },
-    {
-        name: 'Териберка',
-        link: 'https://res.cloudinary.com/ityurina/image/upload/v1599936042/mesto/teriberka06_dtyycm.jpg'
-    }
-];
-const popup = document.querySelector('.popup');
 const template = document.querySelector('.template__card');
 const cards = document.querySelector('.elements__list');
-const card = document.querySelector('.elements__element');
 //попап для просмотра фото:
 const galleryPopup = document.querySelector('.popup_gallery');
 const galleryPopupPhoto = galleryPopup.querySelector('.popup__photo');
@@ -50,6 +21,7 @@ const addPopupSaveButton = addPopup.querySelector('.popup__form_add');
 const cardNameInput = document.querySelector('.popup__item_type_place');
 const cardLinkInput = document.querySelector('.popup__item_type_link');
 
+//ФУНКЦИИ
 
 // удаление карточки:
 const removeCardsItem = (event) => {
@@ -71,14 +43,14 @@ const openGalleryPopup = (event) => {
     galleryPopupCaption.textContent = image.alt;
 }
 
-// закрываем просмотр фото:
+// закрытие просмотра фото:
 const closeGalleryPopup = (event) => {
     closePopup(galleryPopup, event)
 };
 
-//слушатели:
+// функция со слушателями событий внутри карточек(лайк, удаление карточки, попап для просмотра полноразмерного фото):
 const createCardListeners = (card) => {
-    //открыть попап:
+    //открыть попап для просмотра фото:
     const cardImage = card.querySelector('.elements__photo')
     cardImage.addEventListener('click', openGalleryPopup);
     //закрыть попап:
@@ -91,12 +63,14 @@ const createCardListeners = (card) => {
     deleteButton.addEventListener('click', removeCardsItem);
 };
 
-//копируем темплейт карточки, возвращаем данные из массива, добавляем карточки в ul:
+// создание карточки: копируем темплейт карточки, возвращаем данные из массива, добавляем карточки в ul
 const createCard = ({name, link}) => {
     const card = template.content.cloneNode(true); //клонируем шаблон карточки
-    card.querySelector('.elements__name').innerText = name;
-    card.querySelector('.elements__photo').alt = name;
-    card.querySelector('.elements__photo').src = link;
+    const cardPhoto = card.querySelector('.elements__photo');//находим фото карточки в DOM
+    const cardTitle = card.querySelector('.elements__name');//находим название карточки в DOM
+    cardTitle.innerText = name;
+    cardPhoto.alt = name;
+    cardPhoto.src = link;
     createCardListeners(card);
     return card; // возвращаем карточку с атрибутами элементов, обозначенными выше
 }
@@ -110,17 +84,20 @@ const render = () => { //вызвали функцию создания карт
 
 render();
 
-//общие функции для всех попапов:
+//ОБЩИЕ ФУНКЦИИ ДЛЯ ВСЕХ ПОПАПОВ
+
+//открытие:
 const openPopup = (popup) => {
     popup.classList.add('popup_is-opened');
 }
 
+//закрытие:
 const closePopup = (popup, event) => {
     event.preventDefault();
     popup.classList.remove('popup_is-opened');
 }
 
-//попап для редактирования профиля:
+//ПОПАП ДЛЯ РЕДАКТИРОВАНИЯ ПРОФИЛЯ
 
 // открываем попап:
 const openEditPopup = () => {
@@ -154,12 +131,9 @@ const submitEditForm = (event) => {
     saveUserData()
     closeEditPopup(event);
 }
-//слушатели:
-editPopupOpenButton.addEventListener('click', openEditPopup);
-editPopupCloseButton.addEventListener('click', closeEditPopup);
-editPopupSaveButton.addEventListener('submit', submitEditForm);
 
-//попап для добавления новых карточек:
+//ПОПАП ДЛЯ ДОБАВЛЕНИЯ НОВЫХ КАРТОЧЕК
+
 // открываем попап:
 const openAddPopup = () => {
     addPopupSaveButton.reset();
@@ -182,7 +156,16 @@ const submitAddForm = (event) => {
     addCard(cardNameInput.value, cardLinkInput.value);
     closeAddPopup(event)
 }
-//слушатели:
-addPopupOpenButton.addEventListener('click', openAddPopup);
-addPopupCloseButton.addEventListener('click', closeAddPopup);
-addPopupSaveButton.addEventListener('submit', submitAddForm);
+
+//СЛУШАТЕЛИ СОБЫТИЙ
+
+//попап для добавления новой карточки:
+addPopupOpenButton.addEventListener('click', openAddPopup); //открытие
+addPopupCloseButton.addEventListener('click', closeAddPopup); //закрытие по клику на крестик
+addPopupSaveButton.addEventListener('submit', submitAddForm); //сабмит формы
+
+//попап для редактирования профиля:
+editPopupOpenButton.addEventListener('click', openEditPopup); //открытие
+editPopupCloseButton.addEventListener('click', closeEditPopup); //закрытие по клику на крестик
+editPopupSaveButton.addEventListener('submit', submitEditForm); //сабмит формы
+
