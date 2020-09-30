@@ -20,15 +20,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="536014d8-3ba0-4556-b7b9-e0a17cf611af" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/scripts/cards.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blocks/popup/__btn/_inactive/popup__btn_inactive.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blocks/popup/__input-error/_active/popup__input-error_active.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blocks/popup/__input-error/popup__input-error.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blocks/popup/__item/_type/popup__item_type_err.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blocks/popup/__section/popup__section.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/validate.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/popup/__btn/popup__btn.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/__btn/popup__btn.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/popup/__form/popup__form.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/__form/popup__form.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/popup/__item/popup__item.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/__item/popup__item.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -49,6 +66,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="textmate" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -57,6 +75,11 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/blocks/popup/__item/_type" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -77,7 +100,17 @@
       <workItem from="1600585012745" duration="1597000" />
       <workItem from="1600592716349" duration="4052000" />
       <workItem from="1600668933166" duration="104000" />
-      <workItem from="1600694371974" duration="1756000" />
+      <workItem from="1600694371974" duration="3780000" />
+      <workItem from="1600759388009" duration="3285000" />
+      <workItem from="1600844515137" duration="441000" />
+      <workItem from="1600852164218" duration="465000" />
+      <workItem from="1600956644876" duration="132000" />
+      <workItem from="1601111097500" duration="3693000" />
+      <workItem from="1601126318563" duration="9000" />
+      <workItem from="1601126560735" duration="16437000" />
+      <workItem from="1601187176332" duration="3986000" />
+      <workItem from="1601276232271" duration="29792000" />
+      <workItem from="1601449737426" duration="5306000" />
     </task>
     <servers />
   </component>
@@ -100,10 +133,16 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="171" y="349" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600330562849">
-      <screen x="0" y="23" width="1792" height="1015" />
+    <state x="171" y="351" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601126835443">
+      <screen x="0" y="23" width="1792" height="1020" />
     </state>
     <state x="171" y="349" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1792.1015@0.23.1792.1015" timestamp="1600330562849" />
+    <state x="171" y="350" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1792.1017@0.23.1792.1017" timestamp="1601126115020" />
+    <state x="171" y="351" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1792.1020@0.23.1792.1020" timestamp="1601126835443" />
+    <state x="521" y="338" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1601125747698">
+      <screen x="0" y="23" width="1792" height="1017" />
+    </state>
+    <state x="521" y="338" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1792.1017@0.23.1792.1017" timestamp="1601125747698" />
     <state x="549" y="163" width="598" height="735" key="find.popup" timestamp="1600695966175">
       <screen x="0" y="23" width="1792" height="1020" />
     </state>
@@ -112,9 +151,13 @@
       <screen x="0" y="23" width="1792" height="1015" />
     </state>
     <state x="548" y="235" key="run.anything.popup/0.23.1792.1015@0.23.1792.1015" timestamp="1599978159263" />
-    <state x="548" y="237" width="670" height="676" key="search.everywhere.popup" timestamp="1600411956439">
+    <state x="647" y="395" key="scopes" timestamp="1601126725101">
+      <screen x="0" y="23" width="1792" height="1020" />
+    </state>
+    <state x="647" y="395" key="scopes/0.23.1792.1020@0.23.1792.1020" timestamp="1601126725101" />
+    <state x="548" y="237" width="670" height="676" key="search.everywhere.popup" timestamp="1601398724078">
       <screen x="0" y="23" width="1792" height="1013" />
     </state>
-    <state x="548" y="237" width="670" height="676" key="search.everywhere.popup/0.23.1792.1013@0.23.1792.1013" timestamp="1600411956439" />
+    <state x="548" y="237" width="670" height="676" key="search.everywhere.popup/0.23.1792.1013@0.23.1792.1013" timestamp="1601398724078" />
   </component>
 </project>

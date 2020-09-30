@@ -7,6 +7,7 @@
     box-shadow: none;
     color: white;
     padding: 0;
+    transition: visibility 0s, background 0.3s;
 }
 
 .popup__btn:hover {
@@ -17,6 +18,18 @@
 .popup__btn:focus {
      outline: none;
  }
+
+.popup__btn:disabled {
+    color: rgba(196, 196, 196, 1);
+    background: transparent;
+    border: 1px solid rgba(196, 196, 196, 1);
+    border-radius: 2px;
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
 
 @media (max-width: 520px) {
     .popup__btn {

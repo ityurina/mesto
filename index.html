@@ -42,8 +42,14 @@
                     <form class="popup__form popup__form_edit" name="userinfo" method="get" action="#">
                         <button type="reset" class="popup__close"></button>
                         <h2 class="popup__title">Редактировать профиль</h2>
-                        <input type="text" class="popup__item popup__item_type_name" name="name" placeholder="Имя" required />
-                        <input type="text" name="info" class="popup__item popup__item_type_info" placeholder="Инфо" required />
+                        <section class="popup__section">
+                            <input type="text" class="popup__item popup__item_type_name" id="username" name="username" placeholder="Имя" minlength="2" maxlength="40" required>
+                            <span class="popup__input-error" id="username-error"></span>
+                        </section>
+                        <section class="popup__section">
+                            <input type="text" name="userinfo" id="userinfo" class="popup__item popup__item_type_info" placeholder="Инфо" minlength="2" maxlength="200" required>
+                            <span class="popup__input-error" id="userinfo-error"></span>
+                        </section>
                         <button type="submit" class="popup__btn">Сохранить</button>
                     </form>
                 </div>
@@ -51,11 +57,17 @@
 
             <section class="popup popup_add">
                 <div class="popup__container">
-                    <form class="popup__form popup__form_add" name="userinfo" method="get" action="#">
+                    <form class="popup__form popup__form_add" name="add-place" method="get" action="#">
                         <button type="reset" class="popup__close"></button>
                         <h2 class="popup__title">Новое место</h2>
-                        <input type="text" class="popup__item popup__item_type_place" name="name" placeholder="Название" required />
-                        <input type="text" name="info" class="popup__item popup__item_type_link" placeholder="Ссылка на картинку" required />
+                        <section class="popup__section">
+                            <input type="text" class="popup__item popup__item_type_place" id="place" name="place" placeholder="Название" minlength="2" maxlength="30" required>
+                            <span class="popup__input-error" id="place-error">test</span>
+                        </section>
+                        <section class="popup__section">
+                            <input type="url" name="place-link" id="place-link" class="popup__item popup__item_type_link" placeholder="Ссылка на картинку" required>
+                            <span class="popup__input-error" id="place-link-error">test</span>
+                        </section>
                         <button type="submit" class="popup__btn">Создать</button>
                     </form>
                 </div>
@@ -80,8 +92,8 @@
 
         </div>
 
+        <script src="./scripts/validate.js" defer></script>
         <script src="./scripts/index.js" defer></script>
-        <!-- модуль с массивод данных для первоначальных карточек на странице:-->
         <script src="./scripts/cards.js"></script>
     </body>
 </html>

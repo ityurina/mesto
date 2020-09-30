@@ -1,25 +1,25 @@
-const template = document.querySelector('.template__card');
-const cards = document.querySelector('.elements__list');
+const template = document.querySelector('.template__card'); //шаблон карточки
+const cards = document.querySelector('.elements__list');    //список карточек
 //попап для просмотра фото:
-const galleryPopup = document.querySelector('.popup_gallery');
-const galleryPopupPhoto = galleryPopup.querySelector('.popup__photo');
-const galleryPopupCaption = galleryPopup.querySelector('.popup__caption');
+const galleryPopup = document.querySelector('.popup_gallery');  //попап для просмотра фото
+const galleryPopupPhoto = galleryPopup.querySelector('.popup__photo'); //фото в полном размере
+const galleryPopupCaption = galleryPopup.querySelector('.popup__caption'); // подпись к фото
 //попап для редактирования профиля:
-const editPopup = document.querySelector('.popup_edit');
-const editPopupOpenButton = document.querySelector('.profile__edit-btn');
-const editPopupCloseButton = editPopup.querySelector('.popup__close');
-const editPopupSaveButton = editPopup.querySelector('.popup__form_edit');
-const userNameInput = document.querySelector('.popup__item_type_name');
-const userInfoInput = document.querySelector('.popup__item_type_info');
-const profileName = document.querySelector('.profile__username');
-const profileInfo = document.querySelector('.profile__userinfo');
+const editPopup = document.querySelector('.popup_edit'); //попап для редактирования профиля
+const editPopupOpenButton = document.querySelector('.profile__edit-btn'); //кнопка открытия попапа для редактирования профиля
+const editPopupCloseButton = editPopup.querySelector('.popup__close');  //кнопка закрытия попапа для редактирования профиля
+const editPopupSaveButton = editPopup.querySelector('.popup__form_edit'); //форма попапа для редактирования профиля
+const userNameInput = document.querySelector('.popup__item_type_name'); //инпут с именем пользователя
+const userInfoInput = document.querySelector('.popup__item_type_info'); // инпут с инфо
+const profileName = document.querySelector('.profile__username'); // имя пользователя в секции на странице
+const profileInfo = document.querySelector('.profile__userinfo'); // инфо о пользователе в секции на странице
 //попап для добавления новых карточек:
-const addPopup = document.querySelector('.popup_add');
-const addPopupOpenButton = document.querySelector('.profile__add-btn');
-const addPopupCloseButton = addPopup.querySelector('.popup__close');
-const addPopupSaveButton = addPopup.querySelector('.popup__form_add');
-const cardNameInput = document.querySelector('.popup__item_type_place');
-const cardLinkInput = document.querySelector('.popup__item_type_link');
+const addPopup = document.querySelector('.popup_add'); //попа для добавления новых карточек
+const addPopupOpenButton = document.querySelector('.profile__add-btn'); //кнопка открытия попапа для добавления карточек
+const addPopupCloseButton = addPopup.querySelector('.popup__close');  //кнопка закрытия попапа для добавления карточек
+const addPopupSaveButton = addPopup.querySelector('.popup__form_add'); //форма попапа для добавления карточек
+const cardNameInput = document.querySelector('.popup__item_type_place'); // инпут с названием карточки
+const cardLinkInput = document.querySelector('.popup__item_type_link'); // инпут со ссылкой на картинку
 
 //ФУНКЦИИ
 
@@ -50,15 +50,11 @@ const closeGalleryPopup = (event) => {
 
 // функция со слушателями событий внутри карточек(лайк, удаление карточки, попап для просмотра полноразмерного фото):
 const createCardListeners = (card) => {
-    //открыть попап для просмотра фото:
     const cardImage = card.querySelector('.elements__photo')
     cardImage.addEventListener('click', openGalleryPopup);
-    //закрыть попап:
     galleryPopup.querySelector('.popup__close').addEventListener('click', closeGalleryPopup);
-    //лайк:
     const like = card.querySelector('.elements__like');
     like.addEventListener('click', toggleLike);
-    // удаление карточки:
     const deleteButton = card.querySelector('.elements__delete');
     deleteButton.addEventListener('click', removeCardsItem);
 };
@@ -101,13 +97,15 @@ const closePopup = (popup, event) => {
 
 // открываем попап:
 const openEditPopup = () => {
-    loadUserData();
-    openPopup(editPopup);
+    loadUserData();       //подгружаем текущие значения в профиле
+    resetErrorInput(editPopupSaveButton); // сбрасываем ошибки инпутов при предыдущем открытии попапа;
+    openPopup(editPopup);// открываем попап
+    enableValidation(); //вызываем ф-ю валидации инпутов, чтобы кнопка сабмита была (не)активна в соответствии с содержимым инпутов
 }
 
 // закрываем попап:
 const closeEditPopup = (event) =>{
-    closePopup(editPopup, event)
+    closePopup(editPopup, event);
 }
 
 // подгружаем текущие данные профиля в соответствующие инпуты попапа:
@@ -136,8 +134,10 @@ const submitEditForm = (event) => {
 
 // открываем попап:
 const openAddPopup = () => {
-    addPopupSaveButton.reset();
-    openPopup(addPopup);
+    addPopupSaveButton.reset(); //сбрасываем значения, которые могли быть введены перед закрытием попапа без сохранения при предыдущем открытии
+    resetErrorInput(addPopupSaveButton); // сбрасываем ошибки инпутов при предыдущем открытии попапа;
+    openPopup(addPopup);       // открываем попап
+    enableValidation();       //вызываем ф-ю валидации инпутов, чтобы кнопка сабмита была неактивна до ввода корректных данных
 }
 
 // закрываем попап:
@@ -157,15 +157,47 @@ const submitAddForm = (event) => {
     closeAddPopup(event)
 }
 
+//ЗАКРЫТИЕ ПОПАПОВ ПРИ КЛИКЕ НА ОВЕРЛЕЙ ИЛИ НАЖАТИЕМ ESC
+//ESC
+const closePopupByKey = (event) => {
+    const popup = document.querySelector('.popup_is-opened'); //находим открытый попап
+    if (event.key === 'Escape') {                                     //если событие происходит с нажатием escape
+        closePopup(popup, event)                                     //вызываем ф-ю закрытия попапа
+    }
+}
+//Overlay
+const closePopupByOverlay = (event) => {
+    const popup = document.querySelector('.popup_is-opened');//находим открытый попап
+    if (event.target === event.currentTarget) {                      //если событие(клик) происходит в попапе(оверлей это попап в разметке)
+        closePopup(popup, event);                                   //вызываем ф-ю закрытия попапа
+    }
+};
+
+//очистка ошибок инпутов при повторном открытии попапа:
+
+const resetErrorInput = (formElement) => {
+    const inputData = formElement.querySelectorAll('.popup__item') //находим все инпуты внутри формы
+    const inputList = Array.from(inputData);                               //делаем из них массив
+
+    inputList.forEach((inputElement) => {                                 //для каждого инпута из массива
+        hideInputError(formElement, inputElement, inputData);            //скрываем ошибку инпута
+    });
+}
+
 //СЛУШАТЕЛИ СОБЫТИЙ
 
 //попап для добавления новой карточки:
-addPopupOpenButton.addEventListener('click', openAddPopup); //открытие
-addPopupCloseButton.addEventListener('click', closeAddPopup); //закрытие по клику на крестик
+addPopupOpenButton.addEventListener('click', openAddPopup);     //открытие
+addPopupCloseButton.addEventListener('click', closeAddPopup);  //закрытие по клику на крестик
 addPopupSaveButton.addEventListener('submit', submitAddForm); //сабмит формы
 
 //попап для редактирования профиля:
-editPopupOpenButton.addEventListener('click', openEditPopup); //открытие
+editPopupOpenButton.addEventListener('click', openEditPopup);    //открытие
 editPopupCloseButton.addEventListener('click', closeEditPopup); //закрытие по клику на крестик
-editPopupSaveButton.addEventListener('submit', submitEditForm); //сабмит формы
+editPopupSaveButton.addEventListener('submit', submitEditForm);//сабмит формы
 
+//закрытие попапов:
+document.addEventListener('keydown', closePopupByKey);    //закрытие любого попапа с esc
+editPopup.addEventListener('click', closePopupByOverlay); // закрытие попапа для редактирования профиля по клику на оверлей;
+addPopup.addEventListener('click', closePopupByOverlay); // закрытие попапа для добавления карточек по клику на оверлей;
+galleryPopup.addEventListener('click', closePopupByOverlay); // закрытие попапа для просмотра фото по клику на оверлей;
