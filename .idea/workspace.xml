@@ -20,20 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="536014d8-3ba0-4556-b7b9-e0a17cf611af" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/blocks/popup/__btn/_inactive/popup__btn_inactive.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blocks/popup/__input-error/_active/popup__input-error_active.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blocks/popup/__input-error/popup__input-error.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blocks/popup/__item/_type/popup__item_type_err.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blocks/popup/__section/popup__section.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/validate.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/popup/__btn/popup__btn.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/__btn/popup__btn.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/popup/__form/popup__form.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/__form/popup__form.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/popup/__item/popup__item.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/__item/popup__item.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/validate.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/validate.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +99,9 @@
       <workItem from="1601126560735" duration="16437000" />
       <workItem from="1601187176332" duration="3986000" />
       <workItem from="1601276232271" duration="29792000" />
-      <workItem from="1601449737426" duration="5306000" />
+      <workItem from="1601449737426" duration="5742000" />
+      <workItem from="1601478662468" duration="739000" />
+      <workItem from="1601536753196" duration="1576000" />
     </task>
     <servers />
   </component>

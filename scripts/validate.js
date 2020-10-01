@@ -12,8 +12,8 @@ const showInputError = (formElement, inputElement, errorMessage) => {
 //скрываем ошибку инпута
 const hideInputError = (formElement, inputElement) => {
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);//находим span под соответствующим инпутом
-    errorElement.textContent = ""; //делаем его пустым
-    errorElement.classList.remove("popup__input-error_active"); //скрываем span
+    errorElement.textContent = ''; //делаем его пустым
+    errorElement.classList.remove('popup__input-error_active'); //скрываем span
     inputElement.classList.remove('popup__item_type_err');     //убираем красный аутлайн
 }
 
@@ -36,18 +36,18 @@ const hasInvalidInput = (inputList) => {
 
 const toggleButtonState = (inputList, buttonElement) => {
     if (hasInvalidInput(inputList)) {
-        buttonElement.classList.add("popup__btn_inactive");
-        buttonElement.setAttribute("disabled", true);
+        buttonElement.classList.add('popup__btn_inactive');
+        buttonElement.setAttribute('disabled', true);
     } else {
-        buttonElement.classList.remove("popup__btn_inactive");
-        buttonElement.removeAttribute("disabled");
+        buttonElement.classList.remove('popup__btn_inactive');
+        buttonElement.removeAttribute('disabled');
     }
 };
 
 //устанавливаем обработчики событий для инпутов
 const setEventListeners = (formElement) => {
     const inputList = Array.from(formElement.querySelectorAll('.popup__item'));// ищем все инпуты в форме, создаем массив
-    const buttonElement = formElement.querySelector(".popup__btn");// ищем кнопку отправки в форме
+    const buttonElement = formElement.querySelector('.popup__btn');// ищем кнопку отправки в форме
 
     inputList.forEach((inputElement) => {                   // для всех инпутов:
         inputElement.addEventListener('input', () => {     // проверяем валидность введенных данных
@@ -73,4 +73,11 @@ const enableValidation = () => {
     formList.forEach(formListIterator);                            //для всех форм вызываем ф-ю с последовательностью итераций по проверке на валидность инпутов;
 };
 
-enableValidation()
+enableValidation({
+    formSelector: '.popup__form',
+    inputSelector: '.popup__item',
+    submitButtonSelector: '.popup__btn',
+    inactiveButtonClass: 'popup__btn_inactive',
+    inputErrorClass: 'popup__item_type_err',
+    errorClass: 'popup__input-error_active'
+})

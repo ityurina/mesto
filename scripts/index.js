@@ -71,26 +71,28 @@ const createCard = ({name, link}) => {
     return card; // возвращаем карточку с атрибутами элементов, обозначенными выше
 }
 
-const render = () => { //вызвали функцию создания карточки
+const renderInitialCards = () => { //вызвали функцию создания карточки
     initialCards.forEach(({name, link}) => { //для каждого элемента массива:
         const card = createCard({name, link}); //передали карточке значения name и link
         cards.appendChild(card); // добавили карточки в ul
     })
 }
 
-render();
+renderInitialCards();
 
 //ОБЩИЕ ФУНКЦИИ ДЛЯ ВСЕХ ПОПАПОВ
 
 //открытие:
 const openPopup = (popup) => {
     popup.classList.add('popup_is-opened');
+    document.addEventListener('keydown', closePopupByKey);//добавляем слушатель для закрытия попапа с esc
 }
 
 //закрытие:
 const closePopup = (popup, event) => {
     event.preventDefault();
     popup.classList.remove('popup_is-opened');
+    document.removeEventListener('keydown', closePopupByKey);//снимаем слушатель для закрытия с esc при закрытии попапа
 }
 
 //ПОПАП ДЛЯ РЕДАКТИРОВАНИЯ ПРОФИЛЯ
@@ -104,7 +106,7 @@ const openEditPopup = () => {
 }
 
 // закрываем попап:
-const closeEditPopup = (event) =>{
+const closeEditPopup = (event) => {
     closePopup(editPopup, event);
 }
 
@@ -114,15 +116,11 @@ const loadUserData = () => {
     userInfoInput.value = profileInfo.textContent;
 }
 
-loadUserData();
-
 // передаем введенные в инпуты данные профиля:
-const saveUserData = () =>{
+const saveUserData = () => {
     profileName.textContent = userNameInput.value;
     profileInfo.textContent = userInfoInput.value;
 }
-
-saveUserData();
 
 // при нажатии на "сохранить" вызываем функции для сохранения данных из инпута и закрытия попапа:
 const submitEditForm = (event) => {
@@ -197,7 +195,6 @@ editPopupCloseButton.addEventListener('click', closeEditPopup); //закрыти
 editPopupSaveButton.addEventListener('submit', submitEditForm);//сабмит формы
 
 //закрытие попапов:
-document.addEventListener('keydown', closePopupByKey);    //закрытие любого попапа с esc
 editPopup.addEventListener('click', closePopupByOverlay); // закрытие попапа для редактирования профиля по клику на оверлей;
 addPopup.addEventListener('click', closePopupByOverlay); // закрытие попапа для добавления карточек по клику на оверлей;
 galleryPopup.addEventListener('click', closePopupByOverlay); // закрытие попапа для просмотра фото по клику на оверлей;
