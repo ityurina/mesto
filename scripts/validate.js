@@ -1,3 +1,12 @@
+const validationConfig = ({
+    formElement: '.popup__form',
+    inputElement: '.popup__item',
+    buttonElement: '.popup__btn',
+    inactiveButtonClass: 'popup__btn_inactive',
+    inputErrorClass: 'popup__item_type_err',
+    errorClass: 'popup__input-error_active'
+});
+
 //ФУНКЦИИ ПОКАЗА ОШИБКИ ИНПУТА
 
 //ф-я показа ошибки инпута
@@ -73,11 +82,4 @@ const enableValidation = () => {
     formList.forEach(formListIterator);                            //для всех форм вызываем ф-ю с последовательностью итераций по проверке на валидность инпутов;
 };
 
-enableValidation({
-    formSelector: '.popup__form',
-    inputSelector: '.popup__item',
-    submitButtonSelector: '.popup__btn',
-    inactiveButtonClass: 'popup__btn_inactive',
-    inputErrorClass: 'popup__item_type_err',
-    errorClass: 'popup__input-error_active'
-})
+enableValidation(validationConfig);

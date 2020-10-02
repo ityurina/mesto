@@ -102,7 +102,7 @@ const openEditPopup = () => {
     loadUserData();       //подгружаем текущие значения в профиле
     resetErrorInput(editPopupSaveButton); // сбрасываем ошибки инпутов при предыдущем открытии попапа;
     openPopup(editPopup);// открываем попап
-    enableValidation(); //вызываем ф-ю валидации инпутов, чтобы кнопка сабмита была (не)активна в соответствии с содержимым инпутов
+
 }
 
 // закрываем попап:
@@ -135,7 +135,6 @@ const openAddPopup = () => {
     addPopupSaveButton.reset(); //сбрасываем значения, которые могли быть введены перед закрытием попапа без сохранения при предыдущем открытии
     resetErrorInput(addPopupSaveButton); // сбрасываем ошибки инпутов при предыдущем открытии попапа;
     openPopup(addPopup);       // открываем попап
-    enableValidation();       //вызываем ф-ю валидации инпутов, чтобы кнопка сабмита была неактивна до ввода корректных данных
 }
 
 // закрываем попап:
@@ -171,16 +170,20 @@ const closePopupByOverlay = (event) => {
     }
 };
 
-//очистка ошибок инпутов при повторном открытии попапа:
+//очистка ошибок при повторном открытии попапа:
 
 const resetErrorInput = (formElement) => {
+    const buttonElement = formElement.querySelector('.popup__btn')  //находим кнопку
     const inputData = formElement.querySelectorAll('.popup__item') //находим все инпуты внутри формы
     const inputList = Array.from(inputData);                               //делаем из них массив
 
     inputList.forEach((inputElement) => {                                 //для каждого инпута из массива
         hideInputError(formElement, inputElement, inputData);            //скрываем ошибку инпута
     });
+
+    toggleButtonState(inputList, buttonElement);                       //переключаем кнопку в корректное состояние
 }
+
 
 //СЛУШАТЕЛИ СОБЫТИЙ
 
@@ -195,6 +198,6 @@ editPopupCloseButton.addEventListener('click', closeEditPopup); //закрыти
 editPopupSaveButton.addEventListener('submit', submitEditForm);//сабмит формы
 
 //закрытие попапов:
-editPopup.addEventListener('click', closePopupByOverlay); // закрытие попапа для редактирования профиля по клику на оверлей;
-addPopup.addEventListener('click', closePopupByOverlay); // закрытие попапа для добавления карточек по клику на оверлей;
-galleryPopup.addEventListener('click', closePopupByOverlay); // закрытие попапа для просмотра фото по клику на оверлей;
+editPopup.addEventListener('mousedown', closePopupByOverlay); // закрытие попапа для редактирования профиля по клику на оверлей;
+addPopup.addEventListener('mousedown', closePopupByOverlay); // закрытие попапа для добавления карточек по клику на оверлей;
+galleryPopup.addEventListener('mousedown', closePopupByOverlay); // закрытие попапа для просмотра фото по клику на оверлей;
