@@ -47,7 +47,7 @@ const toggleButtonState = (inputList, buttonElement) => {
 //устанавливаем обработчики событий для инпутов
 const setEventListeners = (formElement) => {
     const inputList = Array.from(formElement.querySelectorAll(validationConfig.inputSelector));// ищем все инпуты в форме, создаем массив
-    const buttonElement = formElement.querySelector(validationConfig.buttonSelector);// ищем кнопку отправки в форме
+    const buttonElement = formElement.querySelector(validationConfig.submitButtonSelector);// ищем кнопку отправки в форме
 
     inputList.forEach((inputElement) => {                   // для всех инпутов:
         inputElement.addEventListener('input', () => {     // проверяем валидность введенных данных
