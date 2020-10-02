@@ -173,8 +173,8 @@ const closePopupByOverlay = (event) => {
 //очистка ошибок при повторном открытии попапа:
 
 const resetErrorInput = (formElement) => {
-    const buttonElement = formElement.querySelector('.popup__btn')  //находим кнопку
-    const inputData = formElement.querySelectorAll('.popup__item') //находим все инпуты внутри формы
+    const buttonElement = formElement.querySelector(validationConfig.buttonSelector)  //находим кнопку
+    const inputData = formElement.querySelectorAll(validationConfig.inputSelector) //находим все инпуты внутри формы
     const inputList = Array.from(inputData);                               //делаем из них массив
 
     inputList.forEach((inputElement) => {                                 //для каждого инпута из массива

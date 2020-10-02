@@ -1,20 +1,11 @@
-const validationConfig = ({
-    formElement: '.popup__form',
-    inputElement: '.popup__item',
-    buttonElement: '.popup__btn',
-    inactiveButtonClass: 'popup__btn_inactive',
-    inputErrorClass: 'popup__item_type_err',
-    errorClass: 'popup__input-error_active'
-});
-
 //ФУНКЦИИ ПОКАЗА ОШИБКИ ИНПУТА
 
 //ф-я показа ошибки инпута
 const showInputError = (formElement, inputElement, errorMessage) => {
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`); // находим span под соответствующим инпутом
     errorElement.textContent = errorMessage;                  // помещаем в него текст ошибки
-    errorElement.classList.add('popup__input-error_active'); // делаем текст ошибки видимым путем назначения класса со стилями
-    inputElement.classList.add('popup__item_type_err');     // добавляем красный аутлайн
+    errorElement.classList.add(validationConfig.errorClass); // делаем текст ошибки видимым путем назначения класса со стилями
+    inputElement.classList.add(validationConfig.inputErrorClass);// добавляем красный аутлайн
 }
 //ФУНКЦИИ СКРЫТИЯ ОШИБКИ ИНПУТА
 
@@ -22,8 +13,8 @@ const showInputError = (formElement, inputElement, errorMessage) => {
 const hideInputError = (formElement, inputElement) => {
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);//находим span под соответствующим инпутом
     errorElement.textContent = ''; //делаем его пустым
-    errorElement.classList.remove('popup__input-error_active'); //скрываем span
-    inputElement.classList.remove('popup__item_type_err');     //убираем красный аутлайн
+    errorElement.classList.remove(validationConfig.errorClass); //скрываем span
+    inputElement.classList.remove(validationConfig.inputErrorClass);//убираем красный аутлайн
 }
 
 //ПРОВЕРКА НА ВАЛИДНОСТЬ, ПОКАЗ ИЛИ СКРЫТИЕ ОШИБКИ, (ДЕЗ)АКТИВАЦИЯ КНОПКИ ОТПРАВКИ ФОРМЫ
@@ -45,18 +36,18 @@ const hasInvalidInput = (inputList) => {
 
 const toggleButtonState = (inputList, buttonElement) => {
     if (hasInvalidInput(inputList)) {
-        buttonElement.classList.add('popup__btn_inactive');
+        buttonElement.classList.add(validationConfig.inactiveButtonClass);
         buttonElement.setAttribute('disabled', true);
     } else {
-        buttonElement.classList.remove('popup__btn_inactive');
+        buttonElement.classList.remove(validationConfig.inactiveButtonClass);
         buttonElement.removeAttribute('disabled');
     }
 };
 
 //устанавливаем обработчики событий для инпутов
 const setEventListeners = (formElement) => {
-    const inputList = Array.from(formElement.querySelectorAll('.popup__item'));// ищем все инпуты в форме, создаем массив
-    const buttonElement = formElement.querySelector('.popup__btn');// ищем кнопку отправки в форме
+    const inputList = Array.from(formElement.querySelectorAll(validationConfig.inputSelector));// ищем все инпуты в форме, создаем массив
+    const buttonElement = formElement.querySelector(validationConfig.buttonSelector);// ищем кнопку отправки в форме
 
     inputList.forEach((inputElement) => {                   // для всех инпутов:
         inputElement.addEventListener('input', () => {     // проверяем валидность введенных данных
@@ -69,8 +60,8 @@ const setEventListeners = (formElement) => {
 }
 
 //Объединяем все объявленные выше ф-ии в последовательность итераций и вызываем их:
-const enableValidation = () => {
-    const formElements = document.querySelectorAll('.popup__form') //находим все формы на странице;
+const enableValidation = ({formSelector}) => {
+    const formElements = document.querySelectorAll(formSelector) //находим все формы на странице;
     const formList = Array.from(formElements);                             // делаем из них массив;
     const formListIterator = (formElement) => {                           //объявляем ф-ю с последовательностью итераций для каждой формы;
         const submitFormHandler = (event) => {                           //отменяем событие по умолчанию;
