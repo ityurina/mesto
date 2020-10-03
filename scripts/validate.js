@@ -10,11 +10,11 @@ const showInputError = (formElement, inputElement, errorMessage) => {
 //ФУНКЦИИ СКРЫТИЯ ОШИБКИ ИНПУТА
 
 //скрываем ошибку инпута
-const hideInputError = (formElement, inputElement, {errorClass, inputErrorClass}) => {
+const hideInputError = (formElement, inputElement) => {
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);//находим span под соответствующим инпутом
     errorElement.textContent = ''; //делаем его пустым
-    errorElement.classList.remove(errorClass); //скрываем span
-    inputElement.classList.remove(inputErrorClass);//убираем красный аутлайн
+    errorElement.classList.remove(validationConfig.errorClass); //скрываем span
+    inputElement.classList.remove(validationConfig.inputErrorClass);//убираем красный аутлайн
 }
 
 //ПРОВЕРКА НА ВАЛИДНОСТЬ, ПОКАЗ ИЛИ СКРЫТИЕ ОШИБКИ, (ДЕЗ)АКТИВАЦИЯ КНОПКИ ОТПРАВКИ ФОРМЫ
@@ -26,7 +26,7 @@ const checkInputValidity = (formElement, inputElement) => {
         const errorMessage = inputElement.validationMessage;
         showInputError(formElement, inputElement, errorMessage); // показываем текст ошибки,
     } else {                                                   // в остальных случаях(все ок)
-        hideInputError(formElement, inputElement, validationConfig);            // скрываем текст ошибки,
+        hideInputError(formElement, inputElement);            // скрываем текст ошибки,
     }
 };
 
