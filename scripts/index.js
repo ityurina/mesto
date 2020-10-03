@@ -100,7 +100,7 @@ const closePopup = (popup, event) => {
 // открываем попап:
 const openEditPopup = () => {
     loadUserData();       //подгружаем текущие значения в профиле
-    resetErrorInput(editPopupSaveButton); // сбрасываем ошибки инпутов при предыдущем открытии попапа;
+    resetErrorInput(editPopupSaveButton, validationConfig); // сбрасываем ошибки инпутов при предыдущем открытии попапа;
     openPopup(editPopup);// открываем попап
 
 }
@@ -133,7 +133,7 @@ const submitEditForm = (event) => {
 // открываем попап:
 const openAddPopup = () => {
     addPopupSaveButton.reset(); //сбрасываем значения, которые могли быть введены перед закрытием попапа без сохранения при предыдущем открытии
-    resetErrorInput(addPopupSaveButton); // сбрасываем ошибки инпутов при предыдущем открытии попапа;
+    resetErrorInput(addPopupSaveButton, validationConfig); // сбрасываем ошибки инпутов при предыдущем открытии попапа;
     openPopup(addPopup);       // открываем попап
 }
 
@@ -172,9 +172,9 @@ const closePopupByOverlay = (event) => {
 
 //очистка ошибок при повторном открытии попапа:
 
-const resetErrorInput = (formElement) => {
-    const buttonElement = formElement.querySelector(validationConfig.submitButtonSelector)  //находим кнопку
-    const inputData = formElement.querySelectorAll(validationConfig.inputSelector) //находим все инпуты внутри формы
+const resetErrorInput = (formElement, {submitButtonSelector, inputSelector}) => {
+    const buttonElement = formElement.querySelector(submitButtonSelector)  //находим кнопку
+    const inputData = formElement.querySelectorAll(inputSelector) //находим все инпуты внутри формы
     const inputList = Array.from(inputData);                               //делаем из них массив
 
     inputList.forEach((inputElement) => {                                 //для каждого инпута из массива
