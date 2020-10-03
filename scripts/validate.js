@@ -10,11 +10,11 @@ const showInputError = (formElement, inputElement, errorMessage) => {
 //ФУНКЦИИ СКРЫТИЯ ОШИБКИ ИНПУТА
 
 //скрываем ошибку инпута
-const hideInputError = (formElement, inputElement) => {
+const hideInputError = (formElement, inputElement, {errorClass, inputErrorClass}) => {
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);//находим span под соответствующим инпутом
     errorElement.textContent = ''; //делаем его пустым
-    errorElement.classList.remove(validationConfig.errorClass); //скрываем span
-    inputElement.classList.remove(validationConfig.inputErrorClass);//убираем красный аутлайн
+    errorElement.classList.remove(errorClass); //скрываем span
+    inputElement.classList.remove(inputErrorClass);//убираем красный аутлайн
 }
 
 //ПРОВЕРКА НА ВАЛИДНОСТЬ, ПОКАЗ ИЛИ СКРЫТИЕ ОШИБКИ, (ДЕЗ)АКТИВАЦИЯ КНОПКИ ОТПРАВКИ ФОРМЫ
@@ -26,7 +26,7 @@ const checkInputValidity = (formElement, inputElement) => {
         const errorMessage = inputElement.validationMessage;
         showInputError(formElement, inputElement, errorMessage); // показываем текст ошибки,
     } else {                                                   // в остальных случаях(все ок)
-        hideInputError(formElement, inputElement);            // скрываем текст ошибки,
+        hideInputError(formElement, inputElement, validationConfig);            // скрываем текст ошибки,
     }
 };
 
@@ -34,12 +34,12 @@ const hasInvalidInput = (inputList) => {
     return inputList.some((inputElement) => !inputElement.validity.valid);
 };
 
-const toggleButtonState = (inputList, buttonElement) => {
+const toggleButtonState = (inputList, buttonElement, {inactiveButtonClass}) => {
     if (hasInvalidInput(inputList)) {
-        buttonElement.classList.add(validationConfig.inactiveButtonClass);
+        buttonElement.classList.add(inactiveButtonClass);
         buttonElement.setAttribute('disabled', true);
     } else {
-        buttonElement.classList.remove(validationConfig.inactiveButtonClass);
+        buttonElement.classList.remove(inactiveButtonClass);
         buttonElement.removeAttribute('disabled');
     }
 };
@@ -52,7 +52,7 @@ const setEventListeners = (formElement, {inputSelector, submitButtonSelector}) =
     inputList.forEach((inputSelector) => {                   // для всех инпутов:
         inputSelector.addEventListener('input', () => {     // проверяем валидность введенных данных
             checkInputValidity(formElement, inputSelector);// запускаем или не запускаем показ текста ошибки и подсветку инпута с ошибкой
-            toggleButtonState(inputList, buttonElement); // делаем кнопку отправки формы активной или нет
+            toggleButtonState(inputList, buttonElement, validationConfig); // делаем кнопку отправки формы активной или нет
         })
     })
 }

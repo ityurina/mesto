@@ -181,7 +181,7 @@ const resetErrorInput = (formElement, {submitButtonSelector, inputSelector}) => 
         hideInputError(formElement, inputElement, inputData);            //скрываем ошибку инпута
     });
 
-    toggleButtonState(inputList, buttonElement);                       //переключаем кнопку в корректное состояние
+    toggleButtonState(inputList, buttonElement, validationConfig);                       //переключаем кнопку в корректное состояние
 }
 
 
