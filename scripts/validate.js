@@ -45,18 +45,16 @@ const toggleButtonState = (inputList, buttonElement) => {
 };
 
 //устанавливаем обработчики событий для инпутов
-const setEventListeners = (formElement) => {
-    const inputList = Array.from(formElement.querySelectorAll(validationConfig.inputSelector));// ищем все инпуты в форме, создаем массив
-    const buttonElement = formElement.querySelector(validationConfig.submitButtonSelector);// ищем кнопку отправки в форме
+const setEventListeners = (formElement, {inputSelector, submitButtonSelector}) => {
+    const inputList = Array.from(formElement.querySelectorAll(inputSelector));// ищем все инпуты в форме, создаем массив
+    const buttonElement = formElement.querySelector(submitButtonSelector);// ищем кнопку отправки в форме
 
-    inputList.forEach((inputElement) => {                   // для всех инпутов:
-        inputElement.addEventListener('input', () => {     // проверяем валидность введенных данных
-            checkInputValidity(formElement, inputElement);// запускаем или не запускаем показ текста ошибки и подсветку инпута с ошибкой
+    inputList.forEach((inputSelector) => {                   // для всех инпутов:
+        inputSelector.addEventListener('input', () => {     // проверяем валидность введенных данных
+            checkInputValidity(formElement, inputSelector);// запускаем или не запускаем показ текста ошибки и подсветку инпута с ошибкой
             toggleButtonState(inputList, buttonElement); // делаем кнопку отправки формы активной или нет
         })
     })
-
-    toggleButtonState(inputList, buttonElement);
 }
 
 //Объединяем все объявленные выше ф-ии в последовательность итераций и вызываем их:
@@ -68,7 +66,7 @@ const enableValidation = ({formSelector}) => {
             event.preventDefault();
         };
         formElement.addEventListener('submit', submitFormHandler);    //создаем слушатели событий для каждой формы, отменяющие отправку формы по умолчанию;
-        setEventListeners(formElement);                              //вызываем ф-ю со слушателями с-й для запуска проверки инпутов на валидность и показа(скрытия)ошибок;
+        setEventListeners(formElement, validationConfig);                              //вызываем ф-ю со слушателями с-й для запуска проверки инпутов на валидность и показа(скрытия)ошибок;
     };
     formList.forEach(formListIterator);                            //для всех форм вызываем ф-ю с последовательностью итераций по проверке на валидность инпутов;
 };
